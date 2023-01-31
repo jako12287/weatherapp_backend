@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-
-export const User = sequelize.define("users", {
+import { City } from "./City.js";
+export const Forecast = sequelize.define("forecasts", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -29,3 +29,5 @@ export const User = sequelize.define("users", {
     type: DataTypes.STRING,
   },
 });
+
+Forecast.belongsToMany(City, { through: "city_forecast" });

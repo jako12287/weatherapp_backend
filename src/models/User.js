@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { City } from "./City.js";
 
 export const User = sequelize.define("users", {
   id: {
@@ -21,3 +22,5 @@ export const User = sequelize.define("users", {
     allowNull: false,
   },
 });
+
+User.belongsToMany(City, { through: "user_city" });
