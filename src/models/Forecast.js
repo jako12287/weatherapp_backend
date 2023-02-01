@@ -3,9 +3,9 @@ import { sequelize } from "../database/database.js";
 
 export const Forecast = sequelize.define("forecasts", {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
-    autoIncrement: true,
   },
   name: {
     type: DataTypes.STRING,

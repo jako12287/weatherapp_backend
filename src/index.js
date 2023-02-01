@@ -1,4 +1,4 @@
-import { app } from "./app.js";
+import app from "./app.js";
 import { sequelize } from "./database/database.js";
 import dotenv from "dotenv";
 import userRoutes from "./routes/User.routes.js";
@@ -10,7 +10,7 @@ app.use(userRoutes);
 
 const Main = async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     app.listen(PORT, () => console.log(`Server listen on Port ${PORT}`));
   } catch (error) {
     console.log(error);
