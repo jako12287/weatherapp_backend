@@ -36,4 +36,24 @@ export const removeFavorites = async () => {
   }
 };
 
+export const allFavorites = async () => {
+  const { userId } = req.params;
+  try {
+    const user = await User.findByPk(userId, {
+      include: [
+        {
+          model: City,
+          through: { attributes: [] },
+        },
+      ],
+    });
 
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    res.send({ favorites: user.cities });
+  } catch (error) {
+    res.status(500).send({ message: "Error fetching favorites" });
+  }
+};
