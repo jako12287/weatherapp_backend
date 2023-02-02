@@ -3,12 +3,14 @@ import { sequelize } from "./database/database.js";
 import dotenv from "dotenv";
 import userRoutes from "./routes/User.routes.js";
 import cityRoutes from "./routes/City.routes.js";
+import favoritesRoutes from "./routes/Favorites.routes.js";
 dotenv.config();
 
 const PORT = process.env.PORT;
 
 app.use(userRoutes);
 app.use(cityRoutes);
+app.use(favoritesRoutes);
 
 const Main = async () => {
   try {
