@@ -7,17 +7,15 @@ export const City = sequelize.define("cities", {
     primaryKey: true,
   },
   lat: {
-    type: DataTypes.STRING,
+    type: DataTypes.FLOAT,
   },
   lon: {
-    type: DataTypes.STRING,
+    type: DataTypes.FLOAT,
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
   country: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
 });
