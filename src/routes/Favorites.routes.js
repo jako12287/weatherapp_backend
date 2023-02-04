@@ -1,10 +1,15 @@
 import { Router } from "express";
-import { addFavorites, removeFavorites, allFavorites } from "../controllers/Favorites.controller.js";
+import { verifyToken } from "../helpers/Auth/verifyToken.js";
+import {
+  addFavorites,
+  removeFavorites,
+  allFavorites,
+} from "../controllers/Favorites.controller.js";
 
 const router = Router();
 
-router.get("/favorites/:userId", allFavorites);
-router.post("/favorites/:userId/:cityId", addFavorites);
-router.delete("/favorites/:userId/:cityId", removeFavorites);
+router.get("/favorites/:userId", verifyToken, allFavorites);
+router.post("/favorites", verifyToken, addFavorites);
+router.delete("/favorites", verifyToken, removeFavorites);
 
 export default router;

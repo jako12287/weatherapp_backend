@@ -1,7 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
-export const User = sequelize.define("users", {
+
+const User = sequelize.define("User", {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -20,4 +21,24 @@ export const User = sequelize.define("users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  role: {
+    type: DataTypes.STRING,
+    defaultValue: "user",
+  },
 });
+
+User.prototype.addCity = async function (city) {
+  return this.addCities([city]);
+};
+
+User.prototype.getCity = async function() {
+  const cities = await this.getCities();
+  return cities;
+};
+
+User.prototype.removeCities = async function(city) {
+  await this.removeCity(city);
+};
+
+
+export default User;

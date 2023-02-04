@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
-export const City = sequelize.define("cities", {
+const City = sequelize.define("City", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -19,3 +19,5 @@ export const City = sequelize.define("cities", {
     type: DataTypes.STRING,
   },
 });
+
+export default City;
