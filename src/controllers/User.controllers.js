@@ -1,4 +1,4 @@
-import { User } from "../models/User.js";
+import User from "../models/User.js";
 
 export const getAllUser = async (req, res) => {
   try {
@@ -41,5 +41,3 @@ export const destroyUser = async (req, res) => {
     res.status(404).send({ message: error.name, status: 404 });
   }
 };
-
-
