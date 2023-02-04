@@ -1,4 +1,4 @@
-import getDataApi from "../Axios/getApi.js";
+import getDataApi from "../helpers/Axios/getApi.js";
 import { City } from "../models/City.js";
 
 const findOrCreateCity = async (data) => {

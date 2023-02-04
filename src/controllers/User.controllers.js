@@ -42,12 +42,4 @@ export const destroyUser = async (req, res) => {
   }
 };
 
-export const createUser = async (req, res) => {
-  const { email, name, password } = req.body;
-  try {
-    const create = await User.create({ email, name, password });
-    res.send({ message: "User created successfully", data: create });
-  } catch (error) {
-    res.status(404).send({ message: error.errors[0].message, status: 404 });
-  }
-};
+
