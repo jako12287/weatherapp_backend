@@ -5,6 +5,7 @@ import userRoutes from "./routes/User.routes.js";
 import cityRoutes from "./routes/City.routes.js";
 import favoritesRoutes from "./routes/Favorites.routes.js";
 import authentication from "./routes/Authentication.routes.js";
+
 dotenv.config();
 
 const PORT = process.env.PORT;

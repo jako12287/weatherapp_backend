@@ -1,6 +1,6 @@
-import { generateToken } from "../helpers/Auth/JWT.js";
+import { generateToken, generateTokenGuest } from "../helpers/Auth/JWT.js";
 import { hashPassword, comparePassword } from "../helpers/Bcryp/bcryp.js";
-import  User  from "../models/User.js";
+import User from "../models/User.js";
 
 export const register = async (req, res) => {
   const { email, name, password } = req.body;
@@ -33,6 +33,25 @@ export const login = async (req, res) => {
         name: user.name,
         role: user.role,
         createdAt: user.createdAt,
+      },
+    });
+  } catch (error) {
+    return res.status(500).send({ message: "Server error" });
+  }
+};
+
+export const loginGuest = async (req, res) => {
+  try {
+    const token = generateTokenGuest();
+    return res.status(200).send({
+      message: "Login guest success",
+      token,
+      user: {
+        email: null,
+        id: null,
+        name: "guest",
+        role: "guest",
+        createdAt: new Date(),
       },
     });
   } catch (error) {

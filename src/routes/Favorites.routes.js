@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { verifyToken } from "../helpers/Auth/verifyToken.js";
+// import { verifyToken } from "../helpers/Auth/verifyToken.js";
+import { checkRole } from "../helpers/Auth/verifyToken.js";
 import {
   addFavorites,
   removeFavorites,
@@ -8,8 +9,8 @@ import {
 
 const router = Router();
 
-router.get("/favorites/:userId", verifyToken, allFavorites);
-router.post("/favorites", verifyToken, addFavorites);
-router.delete("/favorites", verifyToken, removeFavorites);
+router.get("/favorites/:userId", checkRole(["user"]), allFavorites);
+router.post("/favorites", checkRole(["user"]), addFavorites);
+router.delete("/favorites", checkRole(["user"]), removeFavorites);
 
 export default router;
