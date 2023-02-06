@@ -15,3 +15,15 @@ export const generateToken = (user) => {
 
   return jwt.sign(payload, process.env.SECRET, options);
 };
+
+export const generateTokenGuest = () => {
+  const payload = {
+    role: 'guest',
+  };
+
+  const options = {
+    expiresIn: "1m",
+  };
+
+  return jwt.sign(payload, process.env.SECRET, options);
+};
