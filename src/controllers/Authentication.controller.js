@@ -6,8 +6,12 @@ export const register = async (req, res) => {
   const { email, name, password } = req.body;
   const encryption = await hashPassword(password);
   try {
-    const create = await User.create({ email, name, password: encryption });
-    res.send({ message: "User created successfully", data: create });
+    await User.create({ email, name, password: encryption });
+    const autoLogin = await login(req, res);
+    return res.status(200).send({
+      message: "Login success",
+      autoLogin,
+    });
   } catch (error) {
     res.status(404).send({ message: error.errors[0].message, status: 404 });
   }
